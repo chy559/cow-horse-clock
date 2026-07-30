@@ -162,10 +162,15 @@ struct DashboardView: View {
                 NSApplication.shared.terminate(nil)
             } label: {
                 Label("收工", systemImage: "power")
-                    .font(.system(size: 10, weight: .bold, design: .rounded))
+                    .font(.system(size: 11, weight: .black, design: .rounded))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 7)
+                    .punchCard(fill: .punchCoral, radius: 9)
+                    .rotationEffect(.degrees(-0.7))
             }
             .buttonStyle(.plain)
-            .foregroundStyle(Color.punchInk.opacity(0.55))
+            .hoverLift(.compact)
+            .help("退出 CowHorseClock")
 
             Spacer()
 

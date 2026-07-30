@@ -11,6 +11,7 @@ struct AllTests {
             + appModelTests
             + moneyFormatterTests
             + hoverLiftStyleTests
+            + dashboardSourceTests
         var failures = 0
 
         for test in tests {

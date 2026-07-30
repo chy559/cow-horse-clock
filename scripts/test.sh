@@ -35,6 +35,7 @@ swiftc \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AppModelTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/MoneyFormatterTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/HoverLiftStyleTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/DashboardSourceTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 
