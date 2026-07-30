@@ -3,5 +3,7 @@
 DerivedData/
 .build/
 .worktrees/
+dist/
+.swiftpm/
 *.xcuserstate
 xcuserdata/

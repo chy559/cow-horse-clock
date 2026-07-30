@@ -8,6 +8,8 @@
 
 **Tech Stack:** Swift 6、SwiftUI、SwiftData、Charts、ServiceManagement、Swift Package Manager、XCTest、macOS 14 SDK API
 
+**Implementation environment note:** 本机没有完整 Xcode，Command Line Tools 也不包含 SwiftDataMacros 和 XCTest。实施时以 Codable JSON 替代 SwiftData，并使用同工具链直接编译的轻量测试运行器替代 XCTest；业务范围、存储语义和测试覆盖保持不变。
+
 ## Global Constraints
 
 - 最低系统版本必须是 macOS 14 Sonoma。

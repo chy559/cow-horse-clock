@@ -22,10 +22,10 @@
 - UI：SwiftUI。
 - 菜单栏容器：`MenuBarExtra`，使用系统弹窗行为，失焦自动收起。
 - 本地设置：轻量偏好设置存储。
-- 历史收入与日历例外：SwiftData。
+- 历史收入与日历例外：Codable JSON，本地存入应用偏好域。
 - 图表：Swift Charts 或等价的原生轻量实现。
 
-选择原生 SwiftUI 是因为它能以更低的运行开销提供系统一致的菜单栏行为、登录启动和本地数据能力。第一版不引入 WebView、Rust 或跨平台运行时。
+选择原生 SwiftUI 是因为它能以更低的运行开销提供系统一致的菜单栏行为、登录启动和本地数据能力。第一版不引入 WebView、Rust 或跨平台运行时。Codable JSON 足以承载按日增长的小型账本，也让项目在只安装 Apple Command Line Tools 的机器上保持可构建。
 
 ## 3. 信息架构与界面
 
