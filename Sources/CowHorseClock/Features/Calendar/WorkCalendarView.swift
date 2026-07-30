@@ -42,6 +42,7 @@ struct WorkCalendarView: View {
                     .punchCard(fill: .punchCoral, radius: 9)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
 
             Spacer()
 
@@ -49,8 +50,11 @@ struct WorkCalendarView: View {
                 changeMonth(-1)
             } label: {
                 Image(systemName: "chevron.left")
+                    .frame(width: 26, height: 26)
+                    .punchCard(fill: .punchPaper, radius: 8)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
 
             Text(monthTitle)
                 .font(.system(size: 16, weight: .black, design: .rounded))
@@ -60,8 +64,11 @@ struct WorkCalendarView: View {
                 changeMonth(1)
             } label: {
                 Image(systemName: "chevron.right")
+                    .frame(width: 26, height: 26)
+                    .punchCard(fill: .punchPaper, radius: 8)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
 
             Spacer()
 
@@ -126,6 +133,7 @@ struct WorkCalendarView: View {
             .frame(height: 38)
         }
         .buttonStyle(.plain)
+        .hoverLift(.compact)
         .help(dayHelp(kind))
     }
 

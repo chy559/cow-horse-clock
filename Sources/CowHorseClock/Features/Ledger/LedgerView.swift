@@ -78,6 +78,7 @@ struct LedgerView: View {
                     .punchCard(fill: .punchCoral, radius: 9)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
 
             Spacer()
 
@@ -85,8 +86,11 @@ struct LedgerView: View {
                 changeMonth(-1)
             } label: {
                 Image(systemName: "chevron.left")
+                    .frame(width: 26, height: 26)
+                    .punchCard(fill: .punchPaper, radius: 8)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
 
             Text(monthTitle)
                 .font(.system(size: 16, weight: .black, design: .rounded))
@@ -96,8 +100,11 @@ struct LedgerView: View {
                 changeMonth(1)
             } label: {
                 Image(systemName: "chevron.right")
+                    .frame(width: 26, height: 26)
+                    .punchCard(fill: .punchPaper, radius: 8)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
             .disabled(isCurrentMonth)
             .opacity(isCurrentMonth ? 0.3 : 1)
 
@@ -131,6 +138,7 @@ struct LedgerView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
         .punchCard(fill: .punchPaper)
+        .hoverLift()
     }
 
     private var chart: some View {
@@ -154,6 +162,7 @@ struct LedgerView: View {
         .frame(height: 105)
         .padding(10)
         .punchCard(fill: .punchPaper)
+        .hoverLift()
     }
 
     private var recentRecords: some View {
@@ -181,6 +190,7 @@ struct LedgerView: View {
             }
         }
         .punchCard(fill: .punchPaper)
+        .hoverLift()
     }
 
     private func recordRow(

@@ -91,6 +91,7 @@ struct DashboardView: View {
                     }
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
             .help("工位参数")
         }
     }
@@ -152,6 +153,7 @@ struct DashboardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(11)
         .punchCard(fill: fill, radius: 12)
+        .hoverLift()
     }
 
     private var footer: some View {
@@ -175,8 +177,12 @@ struct DashboardView: View {
                     Image(systemName: "arrow.right")
                 }
                 .font(.system(size: 11, weight: .black, design: .rounded))
+                .padding(.horizontal, 9)
+                .padding(.vertical, 7)
+                .punchCard(fill: .punchPaper, radius: 9)
             }
             .buttonStyle(.plain)
+            .hoverLift(.compact)
         }
     }
 }

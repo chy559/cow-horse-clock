@@ -81,6 +81,7 @@ struct SettingsView: View {
                                     }
                             }
                             .buttonStyle(.plain)
+                            .hoverLift(.compact)
                         }
                     }
                 }
@@ -114,6 +115,7 @@ struct SettingsView: View {
                         .punchCard(fill: .punchPaper)
                     }
                     .buttonStyle(.plain)
+                    .hoverLift()
                 }
 
                 validationMessages
@@ -128,6 +130,7 @@ struct SettingsView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 .buttonStyle(.plain)
+                .hoverLift()
                 .disabled(!canSave)
                 .opacity(canSave ? 1 : 0.42)
             }
@@ -175,6 +178,7 @@ struct SettingsView: View {
                 .punchCard(fill: .punchCoral, radius: 9)
         }
         .buttonStyle(.plain)
+        .hoverLift(.compact)
     }
 
     private var canSave: Bool {
