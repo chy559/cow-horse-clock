@@ -178,12 +178,12 @@ struct SettingsView: View {
     }
 
     private var canSave: Bool {
-        parsedSalaryCents != nil && draft.validationErrors.isEmpty
+        parsedSalaryCents != nil && candidateValidationErrors.isEmpty
     }
 
     @ViewBuilder
     private var validationMessages: some View {
-        let messages = draft.validationErrors.map(\.message)
+        let messages = candidateValidationErrors.map(\.message)
         if !messages.isEmpty || parsedSalaryCents == nil || saveError != nil {
             VStack(alignment: .leading, spacing: 4) {
                 if parsedSalaryCents == nil {
@@ -265,18 +265,16 @@ struct SettingsView: View {
     }
 
     private var parsedSalaryCents: Int64? {
-        guard
-            let yuan = Decimal(
-                string: salaryText.replacingOccurrences(of: ",", with: ""),
-                locale: Locale(identifier: "en_US_POSIX")
-            )
-        else {
-            return nil
+        SalaryInputParser.cents(from: salaryText)
+    }
+
+    private var candidateValidationErrors: [SettingsValidationError] {
+        guard let cents = parsedSalaryCents else {
+            return draft.validationErrors
         }
-        var cents = yuan * Decimal(100)
-        var rounded = Decimal()
-        NSDecimalRound(&rounded, &cents, 0, .plain)
-        return NSDecimalNumber(decimal: rounded).int64Value
+        var candidate = draft
+        candidate.dailySalaryCents = cents
+        return candidate.validationErrors
     }
 
     private func loadDraft() {

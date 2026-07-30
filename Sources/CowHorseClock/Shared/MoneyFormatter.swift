@@ -34,3 +34,21 @@ enum MoneyFormatter {
         return String(format: "%02d:%02d:%02d", hours, minutes, remainder)
     }
 }
+
+enum SalaryInputParser {
+    static func cents(from text: String) -> Int64? {
+        guard
+            let yuan = Decimal(
+                string: text.replacingOccurrences(of: ",", with: ""),
+                locale: Locale(identifier: "en_US_POSIX")
+            )
+        else {
+            return nil
+        }
+
+        var cents = yuan * Decimal(100)
+        var rounded = Decimal()
+        NSDecimalRound(&rounded, &cents, 0, .plain)
+        return NSDecimalNumber(decimal: rounded).int64Value
+    }
+}
