@@ -42,13 +42,15 @@ enum HoverLiftStyle: Equatable {
 
 private struct HoverLiftModifier: ViewModifier {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.isEnabled) private var isEnabled
     @State private var isHovered = false
 
     let style: HoverLiftStyle
 
     func body(content: Content) -> some View {
+        let isActive = isHovered && isEnabled
         let activeShadow =
-            isHovered
+            isActive
             ? (reduceMotion ? style.shadowOffset * 0.6 : style.shadowOffset)
             : 0
         let hoverAnimation: Animation =
@@ -57,16 +59,16 @@ private struct HoverLiftModifier: ViewModifier {
             : .spring(response: 0.18, dampingFraction: 0.76)
 
         content
-            .offset(y: isHovered && !reduceMotion ? -style.lift : 0)
-            .scaleEffect(isHovered && !reduceMotion ? style.scale : 1)
+            .offset(y: isActive && !reduceMotion ? -style.lift : 0)
+            .scaleEffect(isActive && !reduceMotion ? style.scale : 1)
             .shadow(
-                color: .punchInk.opacity(isHovered ? 0.92 : 0),
+                color: .punchInk.opacity(isActive ? 0.92 : 0),
                 radius: 0,
                 x: activeShadow,
                 y: activeShadow
             )
-            .zIndex(isHovered ? 10 : 0)
-            .animation(hoverAnimation, value: isHovered)
+            .zIndex(isActive ? 10 : 0)
+            .animation(hoverAnimation, value: isActive)
             .onHover { isHovered = $0 }
     }
 }
