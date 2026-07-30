@@ -21,9 +21,13 @@ swiftc \
   "$PROJECT_DIR/Sources/CowHorseClock/Domain/WorkSettings.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Domain/EarningsSnapshot.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Domain/EarningsEngine.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Persistence/Models.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Persistence/SettingsStore.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Persistence/LedgerStore.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/TestSupport.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/WorkSettingsTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/EarningsEngineTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/LedgerStoreTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 

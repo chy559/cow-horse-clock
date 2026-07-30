@@ -6,7 +6,7 @@ struct TestFailure: Error, CustomStringConvertible {
 
 struct TestCase {
     let name: String
-    let run: () throws -> Void
+    let run: @MainActor () throws -> Void
 }
 
 func expect(
