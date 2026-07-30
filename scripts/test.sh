@@ -27,12 +27,14 @@ swiftc \
   "$PROJECT_DIR/Sources/CowHorseClock/Services/LaunchAtLoginService.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/AppModel.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Shared/MoneyFormatter.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Shared/PunchCardTheme.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/TestSupport.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/WorkSettingsTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/EarningsEngineTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/LedgerStoreTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AppModelTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/MoneyFormatterTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/HoverLiftStyleTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 

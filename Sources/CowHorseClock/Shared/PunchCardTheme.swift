@@ -23,11 +23,63 @@ struct PunchCardModifier: ViewModifier {
     }
 }
 
+enum HoverLiftStyle: Equatable {
+    case standard
+    case compact
+
+    var lift: CGFloat {
+        self == .standard ? 5 : 3
+    }
+
+    var scale: CGFloat {
+        self == .standard ? 1.015 : 1.01
+    }
+
+    var shadowOffset: CGFloat {
+        self == .standard ? 5 : 3
+    }
+}
+
+private struct HoverLiftModifier: ViewModifier {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var isHovered = false
+
+    let style: HoverLiftStyle
+
+    func body(content: Content) -> some View {
+        let activeShadow =
+            isHovered
+            ? (reduceMotion ? style.shadowOffset * 0.6 : style.shadowOffset)
+            : 0
+        let hoverAnimation: Animation =
+            reduceMotion
+            ? .easeOut(duration: 0.1)
+            : .spring(response: 0.18, dampingFraction: 0.76)
+
+        content
+            .offset(y: isHovered && !reduceMotion ? -style.lift : 0)
+            .scaleEffect(isHovered && !reduceMotion ? style.scale : 1)
+            .shadow(
+                color: .punchInk.opacity(isHovered ? 0.92 : 0),
+                radius: 0,
+                x: activeShadow,
+                y: activeShadow
+            )
+            .zIndex(isHovered ? 10 : 0)
+            .animation(hoverAnimation, value: isHovered)
+            .onHover { isHovered = $0 }
+    }
+}
+
 extension View {
     func punchCard(
         fill: Color = .punchPaper,
         radius: CGFloat = 14
     ) -> some View {
         modifier(PunchCardModifier(fill: fill, radius: radius))
+    }
+
+    func hoverLift(_ style: HoverLiftStyle = .standard) -> some View {
+        modifier(HoverLiftModifier(style: style))
     }
 }

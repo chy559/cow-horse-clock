@@ -10,6 +10,7 @@ struct AllTests {
             + ledgerStoreTests
             + appModelTests
             + moneyFormatterTests
+            + hoverLiftStyleTests
         var failures = 0
 
         for test in tests {
