@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct RootPopoverView: View {
+    @EnvironmentObject private var model: AppModel
+
     var body: some View {
-        Text("牛马时钟")
-            .font(.title.bold())
-            .frame(width: 360, height: 480)
+        DashboardView()
+            .id(model.route)
     }
 }
