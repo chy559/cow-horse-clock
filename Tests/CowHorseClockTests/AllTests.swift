@@ -4,7 +4,11 @@ import Foundation
 struct AllTests {
     @MainActor
     static func main() {
-        let tests = workSettingsTests + earningsEngineTests + ledgerStoreTests
+        let tests =
+            workSettingsTests
+            + earningsEngineTests
+            + ledgerStoreTests
+            + appModelTests
         var failures = 0
 
         for test in tests {

@@ -1,5 +1,17 @@
 import Foundation
 
+final class InMemoryKeyValueStore: KeyValueStore {
+    var values: [String: Data] = [:]
+
+    func data(forKey defaultName: String) -> Data? {
+        values[defaultName]
+    }
+
+    func set(_ value: Any?, forKey defaultName: String) {
+        values[defaultName] = value as? Data
+    }
+}
+
 struct TestFailure: Error, CustomStringConvertible {
     let description: String
 }

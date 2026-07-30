@@ -1,17 +1,5 @@
 import Foundation
 
-private final class InMemoryKeyValueStore: KeyValueStore {
-    var values: [String: Data] = [:]
-
-    func data(forKey defaultName: String) -> Data? {
-        values[defaultName]
-    }
-
-    func set(_ value: Any?, forKey defaultName: String) {
-        values[defaultName] = value as? Data
-    }
-}
-
 private let ledgerCalendar: Calendar = {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = TimeZone(identifier: "Asia/Shanghai")!
