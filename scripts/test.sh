@@ -19,8 +19,11 @@ swiftc \
   -module-cache-path "$PROJECT_DIR/.build/test-module-cache" \
   -parse-as-library \
   "$PROJECT_DIR/Sources/CowHorseClock/Domain/WorkSettings.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Domain/EarningsSnapshot.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Domain/EarningsEngine.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/TestSupport.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/WorkSettingsTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/EarningsEngineTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 

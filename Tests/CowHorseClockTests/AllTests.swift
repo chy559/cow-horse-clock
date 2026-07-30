@@ -3,7 +3,7 @@ import Foundation
 @main
 struct AllTests {
     static func main() {
-        let tests = workSettingsTests
+        let tests = workSettingsTests + earningsEngineTests
         var failures = 0
 
         for test in tests {
