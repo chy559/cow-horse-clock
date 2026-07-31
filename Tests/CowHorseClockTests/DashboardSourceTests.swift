@@ -29,5 +29,37 @@ let dashboardSourceTests: [TestCase] = [
             quitButton.contains(".help(\"退出 CowHorseClock\")"),
             "quit button should explain that it exits the app"
         )
+    },
+    TestCase(name: "hero earnings text does not shrink its glyph boundary") {
+        let testsDirectory = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let dashboardURL = projectDirectory
+            .appendingPathComponent(
+                "Sources/CowHorseClock/Features/Dashboard/DashboardView.swift"
+            )
+        let source = try String(contentsOf: dashboardURL, encoding: .utf8)
+        guard
+            let heroStart = source.range(of: "private var hero"),
+            let statsStart = source.range(of: "private var stats")
+        else {
+            throw TestFailure(description: "Dashboard hero not found")
+        }
+        let hero = source[heroStart.lowerBound..<statsStart.lowerBound]
+        guard
+            let amountStart = hero.range(
+                of: "Text(MoneyFormatter.yuan(cents: snapshot.earnedCents))"
+            ),
+            let statusStart = hero.range(of: "HStack(spacing: 6)")
+        else {
+            throw TestFailure(description: "Dashboard hero amount not found")
+        }
+        let amount = hero[amountStart.lowerBound..<statusStart.lowerBound]
+
+        try expect(
+            !amount.contains(".tracking("),
+            "hero earnings text must not use negative tracking"
+        )
     }
 ]

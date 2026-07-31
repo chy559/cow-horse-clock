@@ -103,7 +103,6 @@ struct DashboardView: View {
                 .foregroundStyle(Color.punchInk.opacity(0.62))
             Text(MoneyFormatter.yuan(cents: snapshot.earnedCents))
                 .font(.system(size: 38, weight: .black, design: .monospaced))
-                .tracking(-2)
                 .contentTransition(.numericText())
                 .monospacedDigit()
                 .lineLimit(1)
