@@ -47,5 +47,29 @@ let milestoneSourceTests: [TestCase] = [
                 && appSource.contains(".environmentObject(milestoneModel)"),
             "app should inject milestone model"
         )
+    },
+    TestCase(name: "milestone page provides categorized event editing") {
+        let source = try milestoneSource(
+            "Sources/CowHorseClock/Features/Milestones/MilestoneView.swift"
+        )
+
+        try expect(
+            source.contains("ForEach(MilestoneCategory.allCases)"),
+            "page should expose all categories"
+        )
+        try expect(source.contains("milestones.add("), "page should add")
+        try expect(source.contains("milestones.update("), "page should edit")
+        try expect(source.contains("milestones.delete("), "page should delete")
+        try expect(source.contains("DatePicker("), "editor should select a date")
+        try expect(
+            source.contains("TextEditor(text: $draftNote)"),
+            "editor should accept a description"
+        )
+        try expect(
+            !source.contains("snapshot")
+                && !source.contains("ledgerStore")
+                && !source.contains("FocusTimerModel"),
+            "milestone page should remain independent"
+        )
     }
 ]
