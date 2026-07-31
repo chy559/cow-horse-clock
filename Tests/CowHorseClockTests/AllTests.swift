@@ -14,6 +14,7 @@ struct AllTests {
             + dashboardSourceTests
             + secondaryViewSourceTests
             + focusTimerTests
+            + focusTimerSourceTests
         var failures = 0
 
         for test in tests {

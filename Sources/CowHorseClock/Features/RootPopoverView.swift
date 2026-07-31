@@ -14,6 +14,10 @@ struct RootPopoverView: View {
                 SettingsView(isOnboarding: model.settings.trackingStartDate == nil)
             case .calendar:
                 WorkCalendarView()
+            case .focus:
+                FocusTimerView(onBack: {
+                    model.route = .dashboard
+                })
             }
         }
         .id(model.route)

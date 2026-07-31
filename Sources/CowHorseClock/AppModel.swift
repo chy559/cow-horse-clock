@@ -6,6 +6,7 @@ enum AppRoute: Equatable {
     case ledger
     case settings
     case calendar
+    case focus
 }
 
 enum AppModelError: Error, Equatable {

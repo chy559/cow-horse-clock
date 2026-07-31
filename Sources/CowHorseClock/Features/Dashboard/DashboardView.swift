@@ -79,6 +79,17 @@ struct DashboardView: View {
             Spacer()
 
             Button {
+                model.route = .focus
+            } label: {
+                Image(systemName: "timer")
+                    .frame(width: 30, height: 30)
+                    .softPunchCard(fill: .punchMint, radius: 12)
+            }
+            .buttonStyle(.plain)
+            .hoverLift(.compact)
+            .help("专注时间")
+
+            Button {
                 model.route = .settings
             } label: {
                 Image(systemName: "gearshape.fill")

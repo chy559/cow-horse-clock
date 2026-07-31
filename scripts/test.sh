@@ -40,6 +40,7 @@ swiftc \
   "$PROJECT_DIR/Tests/CowHorseClockTests/DashboardSourceTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/SecondaryViewSourceTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/FocusTimerTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/FocusTimerSourceTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 
