@@ -62,5 +62,48 @@ let secondaryViewSourceTests: [TestCase] = [
             !source.contains(".punchCard("),
             "settings should not keep hard-edged punch cards"
         )
+    },
+    TestCase(name: "settings soft cards keep dashboard hover feedback") {
+        let testsDirectory = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let settingsURL = projectDirectory.appendingPathComponent(
+            "Sources/CowHorseClock/Features/Settings/SettingsView.swift"
+        )
+        let source = try String(contentsOf: settingsURL, encoding: .utf8)
+
+        guard
+            let salaryStart = source.range(of: "fieldGroup(\"每日薪资\")"),
+            let morningStart = source.range(of: "fieldGroup(\"上午计薪\")"),
+            let toggleStart = source.range(
+                of: "Toggle(isOn: $draft.launchAtLogin)"
+            ),
+            let calendarStart = source.range(
+                of: "if !isOnboarding {",
+                range: toggleStart.upperBound..<source.endIndex
+            ),
+            let timeRowStart = source.range(of: "private func timeRangeRow"),
+            let timeBindingStart = source.range(of: "private func timeBinding")
+        else {
+            throw TestFailure(description: "Settings card sections not found")
+        }
+
+        let salary = source[salaryStart.lowerBound..<morningStart.lowerBound]
+        let toggle = source[toggleStart.lowerBound..<calendarStart.lowerBound]
+        let timeRow = source[timeRowStart.lowerBound..<timeBindingStart.lowerBound]
+
+        try expect(
+            salary.contains(".hoverLift()"),
+            "salary card should lift on hover"
+        )
+        try expect(
+            toggle.contains(".hoverLift()"),
+            "launch card should lift on hover"
+        )
+        try expect(
+            timeRow.contains(".hoverLift()"),
+            "time cards should lift on hover"
+        )
     }
 ]

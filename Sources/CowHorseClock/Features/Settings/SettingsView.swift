@@ -42,6 +42,7 @@ struct SettingsView: View {
                     }
                     .padding(11)
                     .softPunchCard(radius: 18)
+                    .hoverLift()
                 }
 
                 fieldGroup("上午计薪") {
@@ -99,6 +100,7 @@ struct SettingsView: View {
                 .tint(.punchCoral)
                 .padding(11)
                 .softPunchCard(fill: .punchPaper, radius: 18)
+                .hoverLift()
 
                 if !isOnboarding {
                     Button {
@@ -233,6 +235,7 @@ struct SettingsView: View {
         }
         .padding(8)
         .softPunchCard(radius: 18)
+        .hoverLift()
     }
 
     private func timeBinding(
