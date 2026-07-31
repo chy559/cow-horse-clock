@@ -75,7 +75,7 @@ struct LedgerView: View {
             } label: {
                 Image(systemName: "arrow.left")
                     .frame(width: 28, height: 28)
-                    .punchCard(fill: .punchCoral, radius: 9)
+                    .softPunchCard(fill: .punchCoral, radius: 12)
             }
             .buttonStyle(.plain)
             .hoverLift(.compact)
@@ -87,7 +87,7 @@ struct LedgerView: View {
             } label: {
                 Image(systemName: "chevron.left")
                     .frame(width: 26, height: 26)
-                    .punchCard(fill: .punchPaper, radius: 8)
+                    .softPunchCard(fill: .punchPaper, radius: 12)
             }
             .buttonStyle(.plain)
             .hoverLift(.compact)
@@ -101,7 +101,7 @@ struct LedgerView: View {
             } label: {
                 Image(systemName: "chevron.right")
                     .frame(width: 26, height: 26)
-                    .punchCard(fill: .punchPaper, radius: 8)
+                    .softPunchCard(fill: .punchPaper, radius: 12)
             }
             .buttonStyle(.plain)
             .hoverLift(.compact)
@@ -137,7 +137,7 @@ struct LedgerView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
-        .punchCard(fill: .punchPaper)
+        .softPunchCard(fill: .punchPaper, radius: 18)
         .hoverLift()
     }
 
@@ -161,7 +161,7 @@ struct LedgerView: View {
         .chartYAxis(.hidden)
         .frame(height: 105)
         .padding(10)
-        .punchCard(fill: .punchPaper)
+        .softPunchCard(fill: .punchPaper, radius: 18)
         .hoverLift()
     }
 
@@ -189,7 +189,7 @@ struct LedgerView: View {
                     .padding(.vertical, 28)
             }
         }
-        .punchCard(fill: .punchPaper)
+        .softPunchCard(fill: .punchPaper, radius: 18)
         .hoverLift()
     }
 
