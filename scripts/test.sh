@@ -24,8 +24,10 @@ swiftc \
   "$PROJECT_DIR/Sources/CowHorseClock/Persistence/Models.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Persistence/SettingsStore.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Persistence/LedgerStore.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Persistence/FocusTimerStore.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Services/LaunchAtLoginService.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/AppModel.swift" \
+  "$PROJECT_DIR/Sources/CowHorseClock/Features/Focus/FocusTimerModel.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Shared/MoneyFormatter.swift" \
   "$PROJECT_DIR/Sources/CowHorseClock/Shared/PunchCardTheme.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/TestSupport.swift" \
@@ -37,6 +39,7 @@ swiftc \
   "$PROJECT_DIR/Tests/CowHorseClockTests/HoverLiftStyleTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/DashboardSourceTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/SecondaryViewSourceTests.swift" \
+  "$PROJECT_DIR/Tests/CowHorseClockTests/FocusTimerTests.swift" \
   "$PROJECT_DIR/Tests/CowHorseClockTests/AllTests.swift" \
   -o "$TEST_BINARY"
 

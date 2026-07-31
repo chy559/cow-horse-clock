@@ -13,6 +13,7 @@ struct AllTests {
             + hoverLiftStyleTests
             + dashboardSourceTests
             + secondaryViewSourceTests
+            + focusTimerTests
         var failures = 0
 
         for test in tests {
