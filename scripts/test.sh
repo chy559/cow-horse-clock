@@ -40,3 +40,4 @@ swiftc \
   -o "$TEST_BINARY"
 
 "$TEST_BINARY"
+bash "$PROJECT_DIR/scripts/test-app-icon.sh"

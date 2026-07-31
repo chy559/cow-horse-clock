@@ -23,7 +23,7 @@
 ## 资源与集成
 
 - 保留 1024px PNG 母版。
-- 生成 macOS `AppIcon.icns`，包含 16、32、128、256、512 与 Retina 对应尺寸。
+- 生成 macOS `AppIcon.icns`，包含现代 `ic07–ic14` 的 32、64、128、256、512、1024px 图层，覆盖 16、32、128、256、512 点及 Retina 场景。由于 macOS 26 的 `iconutil` 无法重新打包其自身导出的 iconset，使用标准 ICNS 块格式写入，并用 `iconutil` 反向解包验证。
 - 将资源存放于 `Resources/AppIcon.png` 与 `Resources/AppIcon.icns`。
 - 构建脚本把 `AppIcon.icns` 复制到应用包 `Contents/Resources`，并在 `Info.plist` 写入 `CFBundleIconFile = AppIcon`。
 - Swift Package 声明中无需把图标作为运行时资源编译；图标由打包脚本直接管理。
@@ -33,5 +33,5 @@
 - `dist/CowHorseClock.app/Contents/Resources/AppIcon.icns` 存在且可读取。
 - `Info.plist` 包含 `CFBundleIconFile`，值为 `AppIcon`。
 - 图标 PNG 为 1024×1024，透明圆角有效。
-- `iconutil` 能识别生成的 ICNS。
+- `iconutil` 能反向解包并识别生成的 ICNS。
 - 现有测试、Release 构建、Info.plist 与代码签名验证全部通过。

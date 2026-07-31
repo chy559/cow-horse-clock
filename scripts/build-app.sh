@@ -18,11 +18,13 @@ swift build --disable-sandbox -c release
 
 APP_DIR="$PROJECT_DIR/dist/CowHorseClock.app"
 BIN_DIR="$APP_DIR/Contents/MacOS"
+RESOURCE_DIR="$APP_DIR/Contents/Resources"
 if [[ -d "$APP_DIR" ]]; then
   rm -rf "$APP_DIR"
 fi
-mkdir -p "$BIN_DIR"
+mkdir -p "$BIN_DIR" "$RESOURCE_DIR"
 cp "$PROJECT_DIR/.build/release/CowHorseClock" "$BIN_DIR/CowHorseClock"
+cp "$PROJECT_DIR/Resources/AppIcon.icns" "$RESOURCE_DIR/AppIcon.icns"
 
 PLIST_PATH="$APP_DIR/Contents/Info.plist"
 plutil -create xml1 "$PLIST_PATH"
@@ -35,6 +37,7 @@ plutil -insert CFBundleShortVersionString -string "1.0.0" "$PLIST_PATH"
 plutil -insert CFBundleVersion -string "1" "$PLIST_PATH"
 plutil -insert LSMinimumSystemVersion -string "14.0" "$PLIST_PATH"
 plutil -insert LSUIElement -bool true "$PLIST_PATH"
+plutil -insert CFBundleIconFile -string "AppIcon" "$PLIST_PATH"
 
 codesign --force --deep --sign - "$APP_DIR"
 echo "$APP_DIR"
