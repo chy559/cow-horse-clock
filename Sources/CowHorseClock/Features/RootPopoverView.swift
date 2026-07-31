@@ -18,6 +18,10 @@ struct RootPopoverView: View {
                 FocusTimerView(onBack: {
                     model.route = .dashboard
                 })
+            case .milestones:
+                MilestoneView(onBack: {
+                    model.route = .dashboard
+                })
             }
         }
         .id(model.route)

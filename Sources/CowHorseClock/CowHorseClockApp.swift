@@ -4,6 +4,7 @@ import SwiftUI
 struct CowHorseClockApp: App {
     @StateObject private var appModel = AppModel()
     @StateObject private var focusTimer = FocusTimerModel()
+    @StateObject private var milestoneModel = MilestoneModel()
 
     var body: some Scene {
         MenuBarExtra(
@@ -13,6 +14,7 @@ struct CowHorseClockApp: App {
             RootPopoverView()
                 .environmentObject(appModel)
                 .environmentObject(focusTimer)
+                .environmentObject(milestoneModel)
         }
         .menuBarExtraStyle(.window)
     }
