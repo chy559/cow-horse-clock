@@ -23,6 +23,41 @@ struct PunchCardModifier: ViewModifier {
     }
 }
 
+private struct SoftPunchCardModifier: ViewModifier {
+    var fill: Color = .punchPaper
+    var radius: CGFloat = 18
+
+    func body(content: Content) -> some View {
+        let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
+
+        content
+            .background {
+                shape.fill(
+                    LinearGradient(
+                        colors: [fill, fill.opacity(0.72)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+            }
+            .clipShape(shape)
+            .overlay {
+                shape.stroke(
+                    LinearGradient(
+                        colors: [
+                            Color.punchInk.opacity(0.9),
+                            Color.punchInk.opacity(0.55)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 1.5
+                )
+            }
+            .shadow(color: .punchInk.opacity(0.08), radius: 4, x: 0, y: 2)
+    }
+}
+
 enum HoverLiftStyle: Equatable {
     case standard
     case compact
@@ -79,6 +114,13 @@ extension View {
         radius: CGFloat = 14
     ) -> some View {
         modifier(PunchCardModifier(fill: fill, radius: radius))
+    }
+
+    func softPunchCard(
+        fill: Color = .punchPaper,
+        radius: CGFloat = 18
+    ) -> some View {
+        modifier(SoftPunchCardModifier(fill: fill, radius: radius))
     }
 
     func hoverLift(_ style: HoverLiftStyle = .standard) -> some View {

@@ -18,8 +18,8 @@ let dashboardSourceTests: [TestCase] = [
         let quitButton = footer.components(separatedBy: "Spacer()")[0]
 
         try expect(
-            quitButton.contains(".punchCard(fill: .punchCoral, radius: 9)"),
-            "quit button should use a coral punch card"
+            quitButton.contains(".softPunchCard(fill: .punchCoral, radius: 12)"),
+            "quit button should use a soft coral punch card"
         )
         try expect(
             quitButton.contains(".hoverLift(.compact)"),
@@ -87,6 +87,43 @@ let dashboardSourceTests: [TestCase] = [
         try expect(
             !hero.contains("今天已经为老板创造"),
             "hero caption should not keep the previous copy"
+        )
+    },
+    TestCase(name: "dashboard cards use soft gradients and rounder corners") {
+        let testsDirectory = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let dashboardURL = projectDirectory
+            .appendingPathComponent(
+                "Sources/CowHorseClock/Features/Dashboard/DashboardView.swift"
+            )
+        let themeURL = projectDirectory
+            .appendingPathComponent(
+                "Sources/CowHorseClock/Shared/PunchCardTheme.swift"
+            )
+        let source = try String(contentsOf: dashboardURL, encoding: .utf8)
+        let themeSource = try String(contentsOf: themeURL, encoding: .utf8)
+
+        try expect(
+            themeSource.contains("func softPunchCard("),
+            "theme should expose the soft punch card modifier"
+        )
+        try expect(
+            themeSource.contains("LinearGradient("),
+            "soft punch card should use a gradient"
+        )
+        try expect(
+            source.contains(".softPunchCard(fill: fill, radius: 18)"),
+            "dashboard stats should use the rounder soft card"
+        )
+        try expect(
+            source.contains(".softPunchCard(fill: .punchCoral, radius: 12)"),
+            "dashboard coral controls should use soft rounded cards"
+        )
+        try expect(
+            source.contains(".softPunchCard(fill: .punchPaper, radius: 12)"),
+            "dashboard ledger control should use a soft rounded card"
         )
     }
 ]

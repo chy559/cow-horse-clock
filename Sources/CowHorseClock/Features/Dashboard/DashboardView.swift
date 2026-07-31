@@ -83,12 +83,7 @@ struct DashboardView: View {
             } label: {
                 Image(systemName: "gearshape.fill")
                     .frame(width: 30, height: 30)
-                    .background(Color.punchCoral)
-                    .clipShape(RoundedRectangle(cornerRadius: 9))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 9)
-                            .stroke(Color.punchInk, lineWidth: 2)
-                    }
+                    .softPunchCard(fill: .punchCoral, radius: 12)
             }
             .buttonStyle(.plain)
             .hoverLift(.compact)
@@ -151,7 +146,7 @@ struct DashboardView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(11)
-        .punchCard(fill: fill, radius: 12)
+        .softPunchCard(fill: fill, radius: 18)
         .hoverLift()
     }
 
@@ -164,7 +159,7 @@ struct DashboardView: View {
                     .font(.system(size: 11, weight: .black, design: .rounded))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 7)
-                    .punchCard(fill: .punchCoral, radius: 9)
+                    .softPunchCard(fill: .punchCoral, radius: 12)
                     .rotationEffect(.degrees(-0.7))
             }
             .buttonStyle(.plain)
@@ -183,7 +178,7 @@ struct DashboardView: View {
                 .font(.system(size: 11, weight: .black, design: .rounded))
                 .padding(.horizontal, 9)
                 .padding(.vertical, 7)
-                .punchCard(fill: .punchPaper, radius: 9)
+                .softPunchCard(fill: .punchPaper, radius: 12)
             }
             .buttonStyle(.plain)
             .hoverLift(.compact)
