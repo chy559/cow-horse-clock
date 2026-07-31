@@ -61,5 +61,32 @@ let dashboardSourceTests: [TestCase] = [
             !amount.contains(".tracking("),
             "hero earnings text must not use negative tracking"
         )
+    },
+    TestCase(name: "hero caption uses the approved copy") {
+        let testsDirectory = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let dashboardURL = projectDirectory
+            .appendingPathComponent(
+                "Sources/CowHorseClock/Features/Dashboard/DashboardView.swift"
+            )
+        let source = try String(contentsOf: dashboardURL, encoding: .utf8)
+        guard
+            let heroStart = source.range(of: "private var hero"),
+            let statsStart = source.range(of: "private var stats")
+        else {
+            throw TestFailure(description: "Dashboard hero not found")
+        }
+        let hero = source[heroStart.lowerBound..<statsStart.lowerBound]
+
+        try expect(
+            hero.contains("Text(\"今天已回血\")"),
+            "hero caption should use the approved copy"
+        )
+        try expect(
+            !hero.contains("今天已经为老板创造"),
+            "hero caption should not keep the previous copy"
+        )
     }
 ]

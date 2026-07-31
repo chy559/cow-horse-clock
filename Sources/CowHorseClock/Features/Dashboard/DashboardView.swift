@@ -98,7 +98,7 @@ struct DashboardView: View {
 
     private var hero: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("今天已经为老板创造")
+            Text("今天已回血")
                 .font(.system(size: 11, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.punchInk.opacity(0.62))
             Text(MoneyFormatter.yuan(cents: snapshot.earnedCents))
