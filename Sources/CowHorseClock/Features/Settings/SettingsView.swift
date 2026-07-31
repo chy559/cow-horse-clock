@@ -41,7 +41,7 @@ struct SettingsView: View {
                             .foregroundStyle(Color.punchInk.opacity(0.5))
                     }
                     .padding(11)
-                    .punchCard()
+                    .softPunchCard(radius: 18)
                 }
 
                 fieldGroup("上午计薪") {
@@ -98,7 +98,7 @@ struct SettingsView: View {
                 .toggleStyle(.switch)
                 .tint(.punchCoral)
                 .padding(11)
-                .punchCard(fill: .punchPaper)
+                .softPunchCard(fill: .punchPaper, radius: 18)
 
                 if !isOnboarding {
                     Button {
@@ -112,7 +112,7 @@ struct SettingsView: View {
                         }
                         .font(.system(size: 11, weight: .bold, design: .rounded))
                         .padding(11)
-                        .punchCard(fill: .punchPaper)
+                        .softPunchCard(fill: .punchPaper, radius: 18)
                     }
                     .buttonStyle(.plain)
                     .hoverLift()
@@ -175,7 +175,7 @@ struct SettingsView: View {
             Image(systemName: "arrow.left")
                 .font(.system(size: 12, weight: .black))
                 .frame(width: 28, height: 28)
-                .punchCard(fill: .punchCoral, radius: 9)
+                .softPunchCard(fill: .punchCoral, radius: 12)
         }
         .buttonStyle(.plain)
         .hoverLift(.compact)
@@ -232,7 +232,7 @@ struct SettingsView: View {
                 .labelsHidden()
         }
         .padding(8)
-        .punchCard()
+        .softPunchCard(radius: 18)
     }
 
     private func timeBinding(

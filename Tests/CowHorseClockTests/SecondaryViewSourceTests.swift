@@ -31,5 +31,36 @@ let secondaryViewSourceTests: [TestCase] = [
             !source.contains(".punchCard("),
             "ledger should not keep hard-edged punch cards"
         )
+    },
+    TestCase(name: "settings cards use soft gradients and rounder corners") {
+        let testsDirectory = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        let projectDirectory = testsDirectory.deletingLastPathComponent()
+        let settingsURL = projectDirectory.appendingPathComponent(
+            "Sources/CowHorseClock/Features/Settings/SettingsView.swift"
+        )
+        let source = try String(contentsOf: settingsURL, encoding: .utf8)
+
+        try expect(
+            source.contains(".softPunchCard(fill: .punchCoral, radius: 12)"),
+            "settings back button should use a soft 12-point card"
+        )
+        try expect(
+            source.components(
+                separatedBy: ".softPunchCard(fill: .punchPaper, radius: 18)"
+            ).count - 1 == 2,
+            "settings paper cards should use two explicit soft cards"
+        )
+        try expect(
+            source.components(
+                separatedBy: ".softPunchCard(radius: 18)"
+            ).count - 1 == 2,
+            "settings input rows should use two default-fill soft cards"
+        )
+        try expect(
+            !source.contains(".punchCard("),
+            "settings should not keep hard-edged punch cards"
+        )
     }
 ]
