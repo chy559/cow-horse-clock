@@ -45,5 +45,39 @@ let focusTimerSourceTests: [TestCase] = [
                 && appSource.contains(".environmentObject(focusTimer)"),
             "app should own and inject the independent focus timer"
         )
+    },
+    TestCase(name: "focus page exposes timer controls without earnings data") {
+        let source = try focusSource(
+            "Sources/CowHorseClock/Features/Focus/FocusTimerView.swift"
+        )
+
+        try expect(
+            [15, 25, 45, 60].allSatisfy {
+                source.contains("minutes: \($0)")
+            },
+            "focus page should expose all approved presets"
+        )
+        try expect(
+            source.contains("focus.start()"),
+            "focus page should start"
+        )
+        try expect(
+            source.contains("focus.pause()"),
+            "focus page should pause"
+        )
+        try expect(
+            source.contains("focus.resume()"),
+            "focus page should resume"
+        )
+        try expect(
+            source.contains("focus.reset()"),
+            "focus page should end a session"
+        )
+        try expect(
+            !source.contains("snapshot")
+                && !source.contains("ledgerStore")
+                && !source.contains("EarningsEngine"),
+            "focus page must stay independent from earnings and ledger data"
+        )
     }
 ]
